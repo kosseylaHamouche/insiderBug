@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Improvment index{% endblock %}
+
+{% block body %}
+    <h1>Improvment index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Auteur</th>
+                <th>Contenu</th>
+                <th>Date_ajout</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for improvment in improvments %}
+            <tr>
+                <td>{{ improvment.id }}</td>
+                <td>{{ improvment.auteur }}</td>
+                <td>{{ improvment.contenu }}</td>
+                <td>{{ improvment.dateAjout ? improvment.dateAjout|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('improvment_show', {'id': improvment.id}) }}">show</a>
+                    <a href="{{ path('improvment_edit', {'id': improvment.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('improvment_new') }}">Create new</a>
+{% endblock %}

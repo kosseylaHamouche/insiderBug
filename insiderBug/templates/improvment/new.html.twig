@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Improvment{% endblock %}
+
+{% block body %}
+    <h1>Create new Improvment</h1>
+
+    {{ include('improvment/_form.html.twig') }}
+
+    <a href="{{ path('improvment_index') }}">back to list</a>
+{% endblock %}

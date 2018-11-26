@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bug index{% endblock %}
+
+{% block body %}
+    <h1>Bug index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Auteur</th>
+                <th>Contenu</th>
+                <th>Date_ajout</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for bug in bugs %}
+            <tr>
+                <td>{{ bug.id }}</td>
+                <td>{{ bug.auteur }}</td>
+                <td>{{ bug.contenu }}</td>
+                <td>{{ bug.dateAjout ? bug.dateAjout|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('bug_show', {'id': bug.id}) }}">show</a>
+                    <a href="{{ path('bug_edit', {'id': bug.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('bug_new') }}">Create new</a>
+{% endblock %}
