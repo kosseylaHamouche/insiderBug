@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Improvment{% endblock %}
+
+{% block body %}
+    <h1>Edit Improvment</h1>
+
+    {{ include('improvment/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('improvment_index') }}">back to list</a>
+
+    {{ include('improvment/_delete_form.html.twig') }}
+{% endblock %}
